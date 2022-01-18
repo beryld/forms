@@ -2,7 +2,7 @@ const form = document.getElementById('firstname');
 const formAge = document.getElementById('age');
 const formPassword = document.getElementById('pwd')
 const confPassword = document.getElementById('pwd-confirm')
-
+const darkModus = document.getElementById('toggle-darkmode')
 
 const registerKeys =(event) => {
     event.preventDefault();
@@ -45,14 +45,30 @@ const pwdLenghtCheck = (event) => {
 }
 
 
-// const checkPwds = (event) =>{
-//     event.preventDefault();
+const pwdChecking = (event) => {
+    event.preventDefault();
+    console.log(formPassword.value)    
+    const currentCheck = event.target.value;
 
-//     const matchInp = event.target.value;
-//     if ( )
-// }
+    if(currentCheck.length >=6){
+    if (formPassword.value === currentCheck){
+        confPassword.style.color="green"}
+        else if (formPassword.value != currentCheck){
+            confPassword.style.color="red"
+            window.alert("Passwords do not match")
+
+        }
+    }
+}
+
+const darkSwitch = (event) => {
+    document.body.style.backgroundColor='black'
+    document.body.style.color='white'
+}
+
 
 form.addEventListener('input',registerKeys);
 formAge.addEventListener('input', confirmAge);
 formPassword.addEventListener('input', pwdLenghtCheck)
-// confPassword.addEventListener('input', checkPwds)
+confPassword.addEventListener('input', pwdChecking)
+darkModus.addEventListener('change', darkSwitch)
